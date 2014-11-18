@@ -36,13 +36,13 @@ namespace Appccelerate.Formatters
         {
             Ensure.ArgumentNotNull(type, "type");
 
-            if (!type.GetTypeInfo().IsGenericType)
+            if (!type.IsGenericType)
             {
                 return type.FullName;
             }
 
             var partName = type.FullName.Substring(0, type.FullName.IndexOf('`'));
-            var genericArgumentNames = type.GetTypeInfo().GenericTypeArguments.Select(arg => arg.FullNameToString());
+            var genericArgumentNames = type.GetGenericArguments().Select(arg => arg.FullNameToString());
             return string.Concat(partName, "<", string.Join(",", genericArgumentNames), ">");
         }
     }

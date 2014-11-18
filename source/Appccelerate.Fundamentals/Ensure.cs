@@ -100,7 +100,7 @@ namespace Appccelerate
             ArgumentNotNull(targetType, "targetType");
             ArgumentNotNull(argumentValue, argumentName);
 
-            if (!targetType.GetTypeInfo().IsAssignableFrom(argumentValue.GetType().GetTypeInfo()))
+            if (!targetType.IsAssignableFrom(argumentValue.GetType()))
             {
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ArgumentMustBeAssignable, targetType), argumentName);
             }
@@ -122,7 +122,7 @@ namespace Appccelerate
             ArgumentNotNull(targetType, "targetType");
             ArgumentNotNull(argumentValue, argumentName);
 
-            if (!targetType.GetTypeInfo().IsAssignableFrom(argumentValue.GetTypeInfo()))
+            if (!targetType.IsAssignableFrom(argumentValue))
             {
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, TypeMustBeAssignable, argumentValue, targetType), argumentName);
             }
